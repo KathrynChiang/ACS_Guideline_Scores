@@ -1,0 +1,151 @@
+---
+title: "2020_ACS_Guideline_Score_10.23.2025"
+output: html_document
+---
+
+# ACS-Guideline-Scores
+
+## Clean and prepping the data
+
+#### Body Mass Index (BMI)
+
+Two BMI timepoint are recommended to calculate the score. Healthy body weight (18.5 to \<24.9 kg/m^2^), overweight (25.0 to 29.9 kg/m^2^), and obesity (≥30 kg/m^2^) are defined using the World Health Organization BMI classifications for adults.^24^ Individuals with a healthy body weight at both timepoints receive 2 points for meeting the Guideline. Individuals with obesity at one or both timepoints are defined as not meeting the Guideline and receive 0 points. A score of 1 is given to individuals that report any other BMI combination (e.g., normal weight and overweight).
+
+Below is a function for categorizing BMI using raw BMI measurements (kg/m\^2).
+
+```{r}
+categorize_BMI <- function(BMI_b, BMI_e, BMI2) {
+  # Backfill missing baseline BMI (BMI_b) with BMI from enrollment (BMI_e) if appliable
+  BMI_b <- ifelse(is.na(BMI_b), BMI_e, BMI_b)
+  
+  # Categorize baseline BMI
+  BMI3cat_b <- ifelse(is.na(BMI_b), 9,
+               ifelse(BMI_b < 18.5, 9, # underweight is excluded
+               ifelse(BMI_b >= 18.5 & BMI_b < 25.0, 1,
+               ifelse(BMI_b >= 25.0 & BMI_b < 30.0, 2,
+               ifelse(BMI_b >= 30.0, 3, 9)))))
+
+  # Categorize BMI timepoint 2 (BMI_2)
+  BMI3cat_2 <- ifelse(is.na(BMI2d), 9,
+               ifelse(BMI2 < 18.5, 9, # underweight is excluded
+               ifelse(BMI2 >= 18.5 & BMI2 < 25.0, 1,
+               ifelse(BMI2 >= 25.0 & BMI2 < 30.0, 2,
+               ifelse(BMI2 >= 30.0, 3, 9)))))
+
+  # Return as a data frame
+  return(data.frame(BMI_B = BMI_b, BMI3CAT_B = BMI3cat_b, BMI_2 = BMI2, BMI3CAT_2 = BMI3cat_2))
+}
+``
+```
+
+If only one BMI measurement is available, the scoring should be adjusted to assign 2, 1, or 0 points to individuals with a healthy weight, overweight, and obesity, respectively.
+
+```{r}
+
+```
+
+#### Moderate-to-Vigorous Physical Activity (MVPA)
+
+To account for total MVPA volume (i.e., intensity and duration), hours engaged in recreational activities per week were multiplied by the corresponding metabolic equivalent (MET) values for individual moderate (3.0-5.9 METs) and vigorous (≥6.0 METs) physical activities, as described by the US Compendium of Physical Activities.
+
+MET-hours/week ≥15 receive a score of 2, indicating exceeding the 2020 ACS Guideline for physical activity; a total of 7.5 to \<15 MET-hours/week earns a score of 1 for meeting the Guideline; and MET-hours/week less than the minimum weekly recommendation of 7.5 METs receive a 0.
+
+\*\*under the assumption we are starting with MET-hours/week.
+
+```{r}
+
+```
+
+#### 2020 ACS Diet Score
+
+-   note how to use diet score alone vs in total ACS score
+
+```{r}
+
+```
+
+#### Alcohol Intake
+
+Daily averages for the amount an individual consumes of standard drink sizes, defined as 12 ounces of beer, 5 ounces of wine, or 1.5 ounces of 80-proof distilled spirits containing approximately 14 grams of ethanol. To operationalize this, alcohol variables that are captured off standard FFQ line items are used. This includes servings per day of regular beer, light beer, red wine, white wine, and liquor.
+
+Those who are nondrinkers are considered to meet the Guideline and receive a score of 2. Females and males who consume ≥1 and ≥2 drinks/day, respectively, receive a score of 1; while females and males who consume \>1 and \>2 drinks/day, respectively, do not meet the Guideline and receive 0 points.
+
+```{r}
+categorize_alcohol_use <- function(beer_reg, beer_lgt, wine_red, wine_wht, liquor) {
+  # Sum total drinks per day
+  alc_tot <- rowSums(cbind(beer_reg, beer_lgt, wine_red, wine_wht, liquor), na.rm = FALSE)
+  
+  # Apply categorization logic
+  ALC <- ifelse(is.na(alc_tot), 9,
+            ifelse(alc_tot == 0, 0, 
+            ifelse(alc_tot > 0 & alc_tot <= 1, 1, 
+            ifelse(alc_tot > 1 & alc_tot <= 2, 2,
+            ifelse(alc_tot > 2, 3, NA)))))
+  
+  return(ALC)
+}
+```
+
+## Calculating each component of the 2020 ACS Guideline Score and combining to create the total 2020 score
+
+```{r}
+#' Calculate ACS Guideline Scores
+#'
+#' This function computes ACS component scores (DIET, ALC, BMI, MVPA) and a total score (0–8)
+#' based on predefined rules. It adds these scores as new columns to the input data frame.
+#'
+#' @param df A data frame containing the necessary variables:
+#'   - DIETCAT
+#'   - ALC
+#'   - BMI3CAT_B, BMI3CAT_2
+#'   - MVPA4CAT
+#'
+#' @return A data frame with new columns: ACS_DIET, ACS_ALC, ACS_BMI, ACS_MVPA, ACS_TOTAL
+#' @export
+#'
+#' @examples
+#' df <- calculate_acs_scores(df)
+calculate_acs_scores <- function(df) {
+  df <- df %>%
+    mutate(
+      ACS_DIET = dplyr::case_when(
+        DIETCAT == 1 ~ 0,
+        DIETCAT == 2 ~ 1,
+        DIETCAT == 3 ~ 2,
+        is.na(DIETCAT) ~ as.numeric(NA),
+        TRUE ~ 99
+      ),
+      ACS_ALC = dplyr::case_when(
+        ALC == 0 ~ 2,
+        ALC == 1 ~ 1,
+        ALC == 2 ~ 1,
+        ALC == 3 ~ 0,
+        is.na(ALC) ~ as.numeric(NA),
+        TRUE ~ 99
+      ),
+      ACS_BMI = dplyr::case_when(
+        BMI3CAT_B == 1 & BMI3CAT_2 == 1 ~ 2,
+        BMI3CAT_B == 2 & BMI3CAT_2 == 1 ~ 1,
+        BMI3CAT_B == 3 & BMI3CAT_2 == 1 ~ 0,
+        BMI3CAT_B == 1 & BMI3CAT_2 == 2 ~ 1,
+        BMI3CAT_B == 2 & BMI3CAT_2 == 2 ~ 1,
+        BMI3CAT_B == 3 & BMI3CAT_2 == 2 ~ 0,
+        BMI3CAT_B == 1 & BMI3CAT_2 == 3 ~ 0,
+        BMI3CAT_B == 2 & BMI3CAT_2 == 3 ~ 0,
+        BMI3CAT_B == 3 & BMI3CAT_2 == 3 ~ 0,
+        is.na(BMI3CAT_B) | is.na(BMI3CAT_2) ~ as.numeric(NA),
+        TRUE ~ 99
+      ),
+      ACS_MVPA = dplyr::case_when(
+        MVPA4CAT == 1 | MVPA4CAT_2 == 2 ~ 0,
+        MVPA4CAT == 3 ~ 1,
+        MVPA4CAT == 4 ~ 2,
+        is.na(MVPA4CAT) ~ as.numeric(NA),
+        TRUE ~ 99
+      ),
+      ACS_TOTAL = ACS_DIET + ACS_ALC + ACS_BMI + ACS_MVPA
+    )
+  
+  return(df)
+}
+```
