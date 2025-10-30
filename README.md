@@ -18,7 +18,7 @@ Current use of the ACS Guideline Scores has predominately taken place with the [
 
 ## How the `ACS-Guideline-Scores` works
 The [ACS-Guideline-Scores](https://github.com/KathrynChiang/ACS_Guideline_Scores.git ) package preforms calculations in two steps:
-1. Computation of each individual component (body weight (via body mass index, BMI), physical activity (PA), diet, and alcohol intake). This includes prepping each variable and scaling it from 0-2.
+1. Computation of each individual lifestyle component: body weight (via body mass index, BMI), physical activity (PA), diet, and alcohol intake. This includes prepping each variable and scaling it from 0-2.
 2. Computation of the total ACS Guideline Score (0-8).
 
 ## Notes before applying the `ACS-Guideline-Scores` package to your data
