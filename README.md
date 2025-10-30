@@ -37,7 +37,7 @@ Diet
 - The ACS Diet Score ranges from 0-12, with higher scores indicating greater dietary alignment. When used in isolation, the diet component can be described in quartiles or on a scale of 0-12.
 - When apart of total ACS Guideline Scores, diet must be rescaled to 0-2 to ensure it recieves the same weight as the other factors in the score (i.e., BMI, PA, and alcohol intake).
 - Therefore, the function for calculate diet is in two parts. Part 1 calculates the ACS Diet Score (0-12) across quartiles and part 2 rescales it to tertiles on a scale of 0-2.
-- For more specifics regarding how the algorithm for the ACS Diet Score is calculated please refer to: **SUPP TABLE COMING SOON*
+- For more specifics regarding how the algorithm for the ACS Diet Score is calculated please refer to: *coming soon*
 
 Alcohol Intake
 - Daily averages for the amount an individual consumes of standard drink sizes are defined as 12 ounces of beer, 5 ounces of wine, or 1.5 ounces of 80-proof distilled spirits containing approximately 14 grams of ethanol.
