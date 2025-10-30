@@ -8,8 +8,7 @@ body weight (via body mass index, BMI), physical activity (PA), diet, and alcoho
 for Cancer Prevention and Cancer Survivors (manscript under review)*. 
 
 ### What are the `ACS-Guideline-Scores`?
-The ACS Guideline Scores were created to characterize concordance with the four lifestyle pillars of the [2020 American Cancer Society (ACS) Guideline for Diet and Physical Activity for Cancer Prevention](https://acsjournals.onlinelibrary.wiley.com/doi/full/10.3322/caac.21591) to evaluate the potential association of overall adherence with disease outcomes. Additional functions for calculating the ACS Guideline Score for Cancer Survivors based on the 
-[2022 ACS Guideline for Nutrition and Physical Activity for Cancer Survivors](https://acsjournals.onlinelibrary.wiley.com/doi/10.3322/caac.21721) will be provided for use in cancer survivorship research.
+The ACS Guideline Scores were created to characterize concordance with the four lifestyle pillars of the ACS Guidelines to evaluate the potential association of overall adherence with disease outcomes *(ACS Guideline Score)* and for use in cancer survivorship research *(ACS Guideline Score for Cancer Survivors)*.
 
 Current use of the ACS Guideline Scores has predominately taken place with the [ACS Cancer Prevention Study (CPS) cohorts](https://www.cancer.org/research/population-science/cancer-prevention-and-survivorship-research-team/acs-cancer-prevention-studies.html), but the scores can and should be used across cohorts and various populations. 
 
