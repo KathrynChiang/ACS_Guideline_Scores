@@ -37,7 +37,7 @@ All four individual lifestyle component scores can be used in isolation (on a sc
 - It contains 6 food and beverage subgroups (each scaled 0-3): intake and variety of vegetables, intake and variety of fruits, whole grains, red/processed meats, sugar-sweetened beverages (SSBs), and highly processed foods (HPF)/refined grains (RG)
 - The ACS Diet Score ranges from 0-12, with higher scores indicating greater alignment to the dietary guidelines.
 - To ensure diet receives the same weight as the other factors when part of the 2020 ACS Guideline Score, rescaling should be applied on a 0-to-2-point scale, based on the approximate tertile distribution of the diet score in the study population. 
-- Therefore, the function for calculate diet is in two parts. Part 1 calculates the ACS Diet Score (0-12) across quartiles and part 2 rescales it to tertiles on a scale of 0-2.
+- Therefore, the function to calculate diet is in two parts. Part 1 calculates the ACS Diet Score (0-12) across quartiles and part 2 rescales it to tertiles on a scale of 0-2.
 - For more specifics regarding how the algorithm for the ACS Diet Score is calculated please refer to: *coming soon*
 
 **Alcohol Intake**
