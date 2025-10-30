@@ -48,7 +48,7 @@ Alcohol Intake
 ### Application Examples of the ACS Guideline Scores and Individual Lifestyle Components Within the ACS Cancer Prevention Study (CPS) Cohorts
 - ACS Diet Score (only): [Associations of Socioeconomic and Geographic Factors With Diet Quality in US Adults](https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2793171)
 - 2020 ACS Guideline Score (Coming soon)
-- [2022 ACS Guidelines for Cancer Survivors ](https://pubmed.ncbi.nlm.nih.gov/40174916/)
+- 2022 ACS Guidelines for Cancer Survivors: [Following the American Cancer Society guideline for cancer survivors and obesity-related cancer survival](https://pubmed.ncbi.nlm.nih.gov/40174916/)
 
 *Note: To promote research translation and comparability of research findings, we ask that clear documentation of any adaptations be shared should you decide to utilize the ACS Guideline Scores in your studies.*
 ## Future Plans & Updates as of 10/29/2025
