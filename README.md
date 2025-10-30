@@ -24,14 +24,14 @@ The [ACS-Guideline-Scores](https://github.com/KathrynChiang/ACS_Guideline_Scores
 ## Notes before applying the `ACS-Guideline-Scores` package to your data
 All four individual lifestyle component scores can be used in isolation (on a scale of 0-2) or summed together as the total ACS Guideline Score (0-8). Below are considerations for each individual component:
 
-Body Mass Index (BMI, kg/m2) 
+**Body Mass Index (BMI, kg/m2)** 
 - BMI variable must be pre-calculated using appropriate height and weight measurements.
 - The BMI component is based on BMI measurements across two timepoints, instructions for application when only one BMI measurement is availiable is provided by Chiang et al (2026). 
 
-Physical Activity (PA) 
+**Physical Activity (PA)** 
 - The function for classifying moderate-to-vigorous physical activity (MVPA) in this package is under the assumption that your variables for PA are already calculated in MET-hours/week according to the [Compendium of Physical Activity](https://pacompendium.com/).
   
-Diet 
+**Diet** 
 - The ACS Diet Score utilizes a more detailed scoring algorithm compared to the other 3 lifestyle factors as it was developed to be both a part of the 2020 ACS Guideline Score and to stand alone as an *a priori* dietary index, the **2020 ACS Diet Score**. 
 - The [2020 ACS Guidelines for Cancer Prevention](https://acsjournals.onlinelibrary.wiley.com/doi/full/10.3322/caac.21591) does not provide specific cut-offs for what defines an optimal intakes of dietary factors in a healthy eating pattern; therefore, sex-specific, data-driven cutpoints for quartiles were choosen and recommended when data allows for it (i.e., normal distribution).
 - It contains 6 food and beverage subgroups (each scaled 0-3): intake and variety of vegetables, intake and variety of fruits, whole grains, red/processed meats, sugar-sweetened beverages (SSBs), and highly processed foods (HPF)/refined grains (RG)
@@ -40,7 +40,7 @@ Diet
 - Therefore, the function for calculate diet is in two parts. Part 1 calculates the ACS Diet Score (0-12) across quartiles and part 2 rescales it to tertiles on a scale of 0-2.
 - For more specifics regarding how the algorithm for the ACS Diet Score is calculated please refer to: *coming soon*
 
-Alcohol Intake
+**Alcohol Intake**
 - Daily averages for the amount an individual consumes of standard drink sizes are defined as 12 ounces of beer, 5 ounces of wine, or 1.5 ounces of 80-proof distilled spirits containing approximately 14 grams of ethanol.
 - To operationalize this, alcohol variables that are captured off standard FFQ line items are used. Please note while 24-hour recall data can be used to calculate the scoring per Chiang et al 2026, *this function utilizes FFQ data only.*
 - This includes servings per day of regular beer, light beer, red wine, white wine, and liquor.
