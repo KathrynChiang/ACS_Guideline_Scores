@@ -26,7 +26,7 @@ All four individual lifestyle component scores can be used in isolation (on a sc
 
 **Body Mass Index (BMI, kg/m2)** 
 - BMI variable must be pre-calculated using appropriate height and weight measurements.
-- The BMI component is based on BMI measurements across two timepoints, instructions for application when only one BMI measurement is availiable is provided by Chiang et al (2026). 
+- The BMI component is based on BMI measurements across two timepoints, instructions for application when only one BMI measurement is availiable is provided by Chiang et al (*under review*). 
 
 **Physical Activity (PA)** 
 - The function for classifying moderate-to-vigorous physical activity (MVPA) in this package is under the assumption that your variables for PA are already calculated in MET-hours/week according to the [Compendium of Physical Activity](https://pacompendium.com/).
