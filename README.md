@@ -42,7 +42,7 @@ All four individual lifestyle component scores can be used in isolation (on a sc
 
 **Alcohol Intake**
 - Daily averages for the amount an individual consumes of standard drink sizes are defined as 12 ounces of beer, 5 ounces of wine, or 1.5 ounces of 80-proof distilled spirits containing approximately 14 grams of ethanol.
-- To operationalize this, alcohol variables that are captured off standard FFQ line items are used. Please note while 24-hour recall data can be used to calculate the scoring per Chiang et al 2026, *this function utilizes FFQ data only.*
+- To operationalize this, alcohol variables should be pre-categorized in drinks per day according to the standard drink sizes above.  
 - This includes servings per day of regular beer, light beer, red wine, white wine, and liquor.
 
 ## How can `ACS-Guideline-Scores` be used?
