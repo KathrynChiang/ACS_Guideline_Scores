@@ -56,4 +56,4 @@ All four individual lifestyle component scores can be used in isolation (on a sc
 This repo is in progress and we appreciate your patience as we thoroughly develop it. In our inital steps, we plan to publish functions and code for calculating the 2020 ACS Guideline Score for Cancer Prevention.
 Following this, we hope to provide functions for calculating the 2022 ACS Guideline Score for Cancer Survivors and eventually strive to provide worked examples to increase reproducibility across cohorts.
 
-In the meantime, thank you for your interest! We are excited to bring you the completed ACS-Guideline-Scores repo very soon!
+In the meantime, thank you for your interest! We are excited to bring you the completed `ACS-Guideline-Scores` repo very soon!
